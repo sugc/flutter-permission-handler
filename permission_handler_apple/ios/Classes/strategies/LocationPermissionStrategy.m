@@ -161,6 +161,11 @@ NSString *const UserDefaultPermissionRequestedKey = @"org.baseflow.permission_ha
     _permissionStatusHandler(permissionStatus);
 }
 
+- (void)locationManagerDidChangeAuthorization:(CLLocationManager *)manager {
+    CLAuthorizationStatus status = manager.authorizationStatus;
+    [self locationManager:manager didChangeAuthorizationStatus:status];
+}
+
 
 + (PermissionStatus)permissionStatus:(PermissionGroup)permission {
     CLAuthorizationStatus authorizationStatus = [CLLocationManager authorizationStatus];
